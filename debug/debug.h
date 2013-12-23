@@ -32,6 +32,7 @@ extern "C"
 #define XERROR(format, ...) do { \
     fprintf(stderr, "[\033[31mERROR\033[m](%s:%d) ", __FILE__, __LINE__); \
     fprintf(stderr, format, ##__VA_ARGS__); \
+    exit(0); \
 } while(0)
 
 #ifdef __cplusplus
