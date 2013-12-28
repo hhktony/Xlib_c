@@ -14,5 +14,8 @@ void *xmalloc(size_t size);
 void *xcalloc(size_t nmemb, size_t size);
 void *xrealloc(void *ptr, size_t size);
 
+char *xstrdup(const char *str);
+void *xmemdup(const void *p, size_t n);
+
 #endif /* end of include guard: XMALLOC_H */
 
