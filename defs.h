@@ -88,23 +88,6 @@ enum _xbool
 #define SIZEOF_STR      1024    /* Default string size. */
 #define SIZEOF_ARG      32      /* Default argument array size. */
 
-/* ******* MEMOTY MANAGEMENT ********** */
-#ifdef USE_BOEHM_GC
-/* define XMALLOC Memory allocation macro. */
-# define	XMALLOC(s)	(GC_MALLOC(s))
-/* define XCALLOC Memory allocation macro. */
-# define	XCALLOC(n, s)	(GC_MALLOC(n * s))
-/* define XFREE Memory liberation macro. */
-# define	XFREE(p)	((void*)p ? (GC_FREE((void*)p), NULL) : NULL, p = NULL)
-#else
-/* define XCALLOC Memory allocation macro. */
-# define	XMALLOC(s)	(calloc(1, s))
-/* define XCALLOC Memory allocation macro. */
-# define	XCALLOC(n, s)	(calloc(n, s))
-/* define XFREE Memory liberation macro. */
-# define	XFREE(p)	((void*)p ? (free((void*)p), NULL) : NULL, p = NULL)
-#endif /* USE_BOEHM_GC */
-
 #if defined(__cplusplus)
 }
 #endif /* __cplusplus */

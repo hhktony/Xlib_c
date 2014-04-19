@@ -7,8 +7,28 @@
  */
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "xmalloc.h"
+
+void *xmemdup(const void *p, size_t n)
+{
+	void *q = xmalloc(n);
+	memcpy(q, p, n);
+	return q;
+}
+
+char *xstrdup(const char *str)
+{
+	size_t len;
+	char *dst;
+
+	len = strlen(str) + 1;
+	dst = xmalloc(len);
+	strncpy(dst, str, len);
+
+	return dst;
+}
 
 void *xmalloc(size_t size)
 {
